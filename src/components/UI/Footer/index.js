@@ -1,8 +1,9 @@
 import React from 'react';
+import "./styles.css";
 
 const Footer = () => (
-    <footer>
-        <p>&copy; 2020</p>
+    <footer className="footer">
+        <p className="footer__text">&copy; 2020 - Todos os direitos reservados</p>
     </footer>
 )
 
