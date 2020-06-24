@@ -1,4 +1,43 @@
+.home {
+    background-image: url("../../assets/img/bg-home.jpg");
+    background-position-x: center;
+    background-size: cover;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    min-height: calc(100vh - 114px);
+    justify-content: center;
+}
 
 .welcome {
-    background-color: #eef9f9;
+    max-width: 370px;
+    width: 100%;
+    padding: 18px;
+}
+
+.welcome__title {
+    font-family: 'OBoticario';
+    text-align: center;
+    margin-bottom: 25px;
+    font-size: 24px;
+}
+@media screen and (max-width: 768px) {
+    .welcome__title {
+        font-size: 20px;
+    }
+}
+
+.welcome__register {
+    margin: 25px 0 0;
+    text-align: center;
+}
+
+.welcome__link {
+    color: #89c84c;
+    transition: color .3s;
+}
+
+.welcome__link:hover {
+    color: #333;
+    transition: color .3s;
 }

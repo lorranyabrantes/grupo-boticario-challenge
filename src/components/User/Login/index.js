@@ -1,4 +1,8 @@
 import React from 'react';
+import Button from '../../UI/Button';
+import Input from '../../UI/Input';
+
+
 import "./styles.css";
 
 class Login extends React.Component {
@@ -9,17 +13,13 @@ class Login extends React.Component {
 
     render() {
         return (
-            <div className="login">
-                <form>
-                    <label for="user">Usuário</label>
-                    <input type="text" name="user" id="user"/>
+            <form className="form-login">
+                <Input label={"Usuário"} type="text" name="user" id="user" placeholder="Ex.: loabrantes" />
 
-                    <label for="password">Senha</label>
-                    <input type="text" name="password" id="password"/>
+                <Input label={"Senha"} type="text" name="password" id="password" placeholder="•••••••••" />
 
-                    <button type="submit">Entrar</button>
-                </form>
-            </div>
+                <Button>Entrar</Button>
+            </form>
         )
     }
 }
