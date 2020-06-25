@@ -5,7 +5,7 @@ import Input from '../../UI/Input';
 
 import "./styles.css";
 
-class Login extends React.Component {
+class LoginForm extends React.Component {
     constructor() {
         super();
         this.state = {}
@@ -13,9 +13,9 @@ class Login extends React.Component {
 
     render() {
         return (
-            <form className="form-login">
-                <Input label={"Usuário"} type="text" name="user" id="user" placeholder="Ex.: loabrantes" />
-
+            <form className="form-register">
+                <Input label={"Email"} type="text" name="email" id="email" placeholder="email@email.com.br" />
+                
                 <Input label={"Senha"} type="text" name="password" id="password" placeholder="•••••••••" />
 
                 <Button>Entrar</Button>
@@ -24,4 +24,4 @@ class Login extends React.Component {
     }
 }
 
-export default Login;
+export default LoginForm;

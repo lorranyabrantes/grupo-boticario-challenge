@@ -1,7 +1,7 @@
 import React from 'react';
 import Header from '../../components/UI/Header';
 import Footer from '../../components/UI/Footer';
-import Login from '../../components/User/Login';
+import LoginForm from '../../components/User/LoginForm';
 
 import { Link } from 'react-router-dom';
 
@@ -12,15 +12,15 @@ const Home = () => (
         <Header />
         <main className="main">
             <div className="home">
-                <div className="welcome">
-                    <h2 className="welcome__title">
+                <div className="home__container">
+                    <h2 className="home__title">
                         Seja bem-vindo(a) ao
                         portal dos revendedores!
                     </h2>
 
-                    <Login />
+                    <LoginForm />
 
-                    <p className="welcome__register">Ainda não tem acesso? <Link className="welcome__link" to={"/cadastre-se"}>Faça seu cadastro</Link></p>
+                    <p className="home__register">Ainda não tem acesso? <Link className="home__link" to={"/cadastre-se"}>Faça seu cadastro</Link></p>
                 </div>
             </div>
         </main>

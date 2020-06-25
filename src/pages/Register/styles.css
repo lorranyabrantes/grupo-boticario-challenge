@@ -1,5 +1,5 @@
-.home {
-    background-image: url("../../assets/img/bg-home.jpg");
+.register {
+    background-image: url("../../assets/img/bg-register.png");
     background-position-x: center;
     background-size: cover;
     height: 100%;
@@ -9,35 +9,35 @@
     justify-content: center;
 }
 
-.home__container {
+.register__container {
     max-width: 370px;
     width: 100%;
     padding: 18px;
 }
 
-.home__title {
+.register__title {
     font-family: 'OBoticario';
     text-align: center;
     margin-bottom: 25px;
     font-size: 24px;
 }
 @media screen and (max-width: 768px) {
-    .home__title {
+    .register__title {
         font-size: 20px;
     }
 }
 
-.home__register {
+.register__login {
     margin: 25px 0 0;
     text-align: center;
 }
 
-.home__link {
+.register__link {
     color: #89c84c;
     transition: color .3s;
 }
 
-.home__link:hover {
+.register__link:hover {
     color: #333;
     transition: color .3s;
 }
