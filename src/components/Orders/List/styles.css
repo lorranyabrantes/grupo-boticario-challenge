@@ -2,6 +2,59 @@
     padding: 35px 0;
 }
 
+.orders__header {
+    display: flex;
+    align-items: center;
+}
+
+.orders__intro {
+    width: 50%;
+    padding-right: 15px;
+}
+
+.orders__actions {
+    display: flex;
+    width: 50%;
+    justify-content: flex-end;
+}
+
+@media screen and (max-width: 768px) {
+    .orders__header {
+        flex-wrap: wrap;
+    }
+    .orders__intro {
+        width: 100%;
+        padding: 0;
+        order: 1;
+    }
+    .orders__actions {
+        width: 100%;
+        order: 0;
+        padding: 0 10px;
+        margin-bottom: 20px;
+        justify-content: flex-start;
+    }
+}
+
+.orders__actions .button {
+    margin: 0 0 0 15px;
+    padding: 0 5px;
+}
+
+@media screen and (max-width: 575px) {
+    .orders__actions {
+        flex-wrap: wrap;
+    }
+    .orders__actions .button {
+        margin: 10px 0 0;
+    }
+
+    .orders__actions .button,
+    .orders__actions .form-select {
+        max-width: initial;
+    }
+}
+
 .orders__title {
     font-family: 'OBoticario';
     font-size: 24px;

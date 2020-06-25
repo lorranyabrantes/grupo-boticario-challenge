@@ -7,7 +7,10 @@ import "./styles.css";
 const UserDetails = () => (
     <div className="user">
         <div className="user__image">
-            <img src={UserImage} alt="" />
+            <div className="user__box-image">
+                <img src={UserImage} alt="" />
+            </div>
+            <button className="user__add-image">+</button>
         </div>
         <div className="user__data">
             <p className="user__name">Olá, Lorrany!</p>

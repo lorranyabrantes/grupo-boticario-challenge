@@ -1,10 +1,12 @@
 import React from 'react';
 import "./styles.css";
 
-const Button = (props) => (
-    <button className="button">
+const Button = (props) => {
+    const htmlClass = props.className ? props.className : "";
+
+    return (<button className={"button " + htmlClass}>
         {props.children}
-    </button>
-)
+    </button>)
+}
 
 export default Button;
