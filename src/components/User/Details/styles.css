@@ -1,0 +1,43 @@
+.user-details {
+    width: 100%;
+    margin: 0 auto;
+    background-color: #f1f1f1;
+    border-bottom-right-radius: 50px;
+    border-bottom-left-radius: 50px;
+    padding: 25px 0;
+}
+
+.user-details__image {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin: 0 auto;
+    border: 5px solid #fff;
+}
+
+.user-details__image img {
+    width: 100%;
+}
+
+.user-details__name {
+    font-family: 'OBoticario';
+    text-align: center;
+    font-size: 32px;
+    margin-top: 15px;
+}
+
+.user-details__cash-back {
+    text-align: center;
+    margin-top: 15px;
+    font-size: 16px;
+}
+
+.user-details__cash-back--highlight{
+    color: #89c84c;
+    font-weight: 700;
+    display: block;
+    font-size: 22px;
+    text-transform: uppercase;
+    margin: 5px 0 0;
+}

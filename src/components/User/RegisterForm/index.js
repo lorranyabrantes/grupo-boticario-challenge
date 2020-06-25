@@ -13,7 +13,7 @@ class RegisterForm extends React.Component {
 
     render() {
         return (
-            <form className="form-login">
+            <form className="form-register">
                 <Input label={"Nome completo"} type="text" name="email" id="email"/>
 
                 <Input label={"CPF"} type="text" name="email" id="email" placeholder="999.999.999-99" />
