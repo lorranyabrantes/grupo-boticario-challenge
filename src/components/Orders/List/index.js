@@ -3,84 +3,43 @@ import "./styles.css";
 
 const OrdersList = () => (
     <div className="orders">
-        <h3 className="orders__title">Suas compras:</h3>
-        <ul className="orders-list">
-            <li className="orders-list__item">
-                <div>
-                    <span>Código:</span>
-                    <h4>#1040730343111-01</h4>
+        <h3 className="orders__title">Suas compras</h3>
+        <p className="orders__description">Aqui você pode acompanhar o status dos pedidos cadastrados:</p>
+        <ul className="orders__cards orders__cards--large">
+            <li className="orders__item">
+                <div className="orders__status orders__status--progress">
+                    <i className="icon icon-progress"></i>
+                    <h3>Em validação</h3>
                 </div>
-                <div>
-                    <span>Valor:</span>
-                    <h4>R$ 50,00</h4>
-                </div>
-                <div>
-                    <span>Data:</span>
-                    <h4>R$ 50,00</h4>
-                </div>
-                <div>
-                    <span>Seu retorno será de:</span>
-                    <h4>50%</h4>
-                </div>
-                <div>
-                    <span>No valor de:</span>
-                    <h4>R$ 50,00</h4>
-                </div>
-                <div>
-                    <span>Status do cadastro:</span>
-                    <h4>Em validação</h4>
+                <div className="orders__details">
+                    <h4 className="orders__code">#1040730343111-01</h4>
+                    <span className="orders__date">08/04/2020</span>
+                    <p className="orders__cashback">Você pode receber um cashback nessa compra de <b>50%</b> no valor de <b>R$ 50,00</b>.</p>
+                    <h4 className="orders__price">R$ 100,00</h4>
                 </div>
             </li>
-            <li className="orders-list__item">
-                <div>
-                    <span>Código:</span>
-                    <h4>#1040730343111-01</h4>
+            <li className="orders__item">
+                <div className="orders__status orders__status--refused">
+                    <i className="icon icon-refused"></i>
+                    <h3>Reprovado</h3>
                 </div>
-                <div>
-                    <span>Valor:</span>
-                    <h4>R$ 50,00</h4>
-                </div>
-                <div>
-                    <span>Data:</span>
-                    <h4>R$ 50,00</h4>
-                </div>
-                <div>
-                    <span>Seu retorno será de:</span>
-                    <h4>50%</h4>
-                </div>
-                <div>
-                    <span>No valor de:</span>
-                    <h4>R$ 50,00</h4>
-                </div>
-                <div>
-                    <span>Status do cadastro:</span>
-                    <h4>Reprovado</h4>
+                <div className="orders__details">
+                    <h4 className="orders__code">#1040730343111-01</h4>
+                    <span className="orders__date">08/04/2020</span>
+                    <p className="orders__cashback">Você pode receber um cashback nessa compra de <b>50%</b> no valor de <b>R$ 50,00</b>.</p>
+                    <h4 className="orders__price">R$ 100,00</h4>
                 </div>
             </li>
-            <li className="orders-list__item">
-                <div>
-                    <span>Código:</span>
-                    <h4>#1040730343111-01</h4>
+            <li className="orders__item">
+                <div className="orders__status orders__status--approved">
+                    <i className="icon icon-approved"></i>
+                    <h3>Aprovado</h3>
                 </div>
-                <div>
-                    <span>Valor:</span>
-                    <h4>R$ 50,00</h4>
-                </div>
-                <div>
-                    <span>Data:</span>
-                    <h4>R$ 50,00</h4>
-                </div>
-                <div>
-                    <span>Seu retorno será de:</span>
-                    <h4>50%</h4>
-                </div>
-                <div>
-                    <span>No valor de:</span>
-                    <h4>R$ 50,00</h4>
-                </div>
-                <div>
-                    <span>Status do cadastro:</span>
-                    <h4>Aprovado</h4>
+                <div className="orders__details">
+                    <h4 className="orders__code">#1040730343111-01</h4>
+                    <span className="orders__date">08/04/2020</span>
+                    <p className="orders__cashback">Você pode receber um cashback nessa compra de <b>50%</b> no valor de <b>R$ 50,00</b>.</p>
+                    <h4 className="orders__price">R$ 100,00</h4>
                 </div>
             </li>
         </ul>

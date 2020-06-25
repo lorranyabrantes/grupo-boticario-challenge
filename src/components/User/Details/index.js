@@ -5,12 +5,14 @@ import UserImage from "../../../assets/img/user-image.jpeg";
 import "./styles.css";
 
 const UserDetails = () => (
-    <div className="user-details">
-        <div className="user-details__image">
-            <img src={UserImage} alt=""/>
+    <div className="user">
+        <div className="user__image">
+            <img src={UserImage} alt="" />
         </div>
-        <p className="user-details__name">Olá, Lorrany!</p>
-        <p className="user-details__cash-back">Seu valor de cashback acumulado até o momento é de: <span className="user-details__cash-back--highlight">r$ 50,00</span></p>
+        <div className="user__data">
+            <p className="user__name">Olá, Lorrany!</p>
+            <p className="user__cashback">Seu valor de cashback acumulado até o momento é de: <span className="user__cashback--highlight">r$ 50,00</span></p>
+        </div>
     </div>
 )
 
