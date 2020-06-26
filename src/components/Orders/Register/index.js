@@ -14,11 +14,11 @@ class RegisterForm extends React.Component {
     render() {
         return (
             <form className="form-orders">
-                <Input label={"Código"} type="text" name="email" id="email" placeholder="#9999999999999-01" />
+                <Input label={"Código"} type="text" name="code" id="code" placeholder="#9999999999999-01" />
 
-                <Input label={"Valor"} type="text" name="email" id="email" placeholder="R$ 50,00" />
+                <Input label={"Valor"} type="text" name="value" id="value" placeholder="R$ 50,00" />
 
-                <Input label={"Data"} type="text" name="password" id="password" placeholder="08/03/2020" />
+                <Input label={"Data"} type="text" name="date" id="date" placeholder="08/03/2020" />
 
                 <Button>Cadastrar</Button>
             </form>

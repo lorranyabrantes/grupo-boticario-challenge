@@ -7,7 +7,7 @@ const Select = (props) => {
     return (<>
         {props.label ? <label className="form-label" htmlFor={props.id}>{props.label}</label> : (null)}
         <div className={"form-select " + htmlClass}>
-            <select>
+            <select defaultValue="default">
                 {props.children}
             </select>
         </div>

@@ -17,7 +17,7 @@ const OrdersList = () => (
             </div>
             <div className="orders__actions">
                 <Select className="form-select--small">
-                    <option selected="selected" disabled="disabled">Filtrar:</option>
+                    <option value="default" disabled="disabled">Filtrar:</option>
                     <option value="approved">Aprovado</option>
                     <option value="progress">Em validação</option>
                     <option value="refused">Reprovado</option>
