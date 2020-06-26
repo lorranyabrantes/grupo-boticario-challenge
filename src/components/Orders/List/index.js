@@ -1,10 +1,14 @@
 import React from 'react';
 import Button from '../../UI/Button';
 import Select from '../../UI/Select';
+import Modal from '../../UI/Modal';
+
+import RegisterForm from '../Register';
 
 import "./styles.css";
 
 const OrdersList = () => (
+    <>
     <div className="orders">
         <div className="orders__header">
             <div className="orders__intro">
@@ -61,6 +65,10 @@ const OrdersList = () => (
             </li>
         </ul>
     </div>
+    <Modal title="Cadastre suas compras :)">
+        <RegisterForm />
+    </Modal>
+    </>
 )
 
 export default OrdersList;

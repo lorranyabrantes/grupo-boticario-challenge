@@ -1,0 +1,61 @@
+.modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    z-index: 3;
+    border-radius: 12px;
+    max-width: 370px;
+    width: calc(100vw - 36px);
+    padding: 30px 18px;
+}
+
+.modal__close {
+    text-indent: -999999px;
+    width: 20px;
+    height: 20px;
+    padding: 0;
+    z-index: 0;
+    cursor: pointer;
+    position: absolute;
+    top: 18px;
+    right: 18px;
+}
+
+.modal__close::after,
+.modal__close::before {
+    content: "";
+    width: 20px;
+    height: 2px;
+    background: #333;
+    position: absolute;
+    top: 50%;
+    border-radius: 2px;
+}
+
+.modal__close::after {
+    left: 0;
+    transform: rotate(45deg);
+}
+
+.modal__close::before {
+    right: 0;
+    transform: rotate(-45deg);
+}
+
+.modal__title {
+    font-family: 'OBoticario';
+    font-size: 20px;
+    margin: 0 0 15px 0;
+    color: #333;
+}
+.modal__overlay {
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    z-index: 2;
+    background-color: rgba(0, 0, 0, 0.25);
+}
