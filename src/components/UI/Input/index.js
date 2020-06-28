@@ -5,7 +5,7 @@ import "./styles.css";
 class Input extends React.Component {
 
     render = () => {
-        const { label, id, placeholder, type, name, error, onChange } = this.props;
+        const { label, id, placeholder, type, name, error,value, onChange } = this.props;
         return (<>
             {label && <label className="form-label" htmlFor={id}>{label}</label>}
 
@@ -15,6 +15,7 @@ class Input extends React.Component {
                 type={type}
                 name={name}
                 onChange={onChange}
+                value={value}
             />
 
             {error && <p className="form-input__error">{error}</p>}

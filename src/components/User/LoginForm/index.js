@@ -7,6 +7,8 @@ import api from "../../../services/api";
 import { login } from "../../../services/auth";
 import { withRouter } from "react-router-dom";
 
+import helper from '../../../app/helpers';
+
 class LoginForm extends React.Component {
     constructor() {
         super();
@@ -23,26 +25,19 @@ class LoginForm extends React.Component {
         };
     }
 
-
-    isEmail = (email) => {
-        let regex = /^([a-zA-Z0-9_.+-])+@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
-        return regex.test(email);
-    }
-
-
     handleLogin = (element) => {
         element.preventDefault();
-        
+
         const { email, password } = this.state;
         let error = false;
-        
+
         if (email.value === "") {
             email.error = "Preencha o e-mail"
             this.setState({ email: email });
             error = true;
         }
 
-        if (email.value !== "" && !this.isEmail(email.value)) {
+        if (email.value !== "" && !helper.isEmail(email.value)) {
             email.error = "Preencha com um e-mail válido"
             this.setState({ email: email });
             error = true;
@@ -68,7 +63,7 @@ class LoginForm extends React.Component {
                     password: password.value
                 }
             );
-            
+
             login(response.data.token);
             this.props.history.push("/account");
         } catch (error) {
@@ -81,7 +76,7 @@ class LoginForm extends React.Component {
     render() {
         return (
             <>
-                <Form className="form-register" onSubmit={this.handleLogin}>
+                <Form className="form-login" onSubmit={this.handleLogin}>
                     <Input
                         label={"Email"}
                         type="text"
@@ -89,6 +84,7 @@ class LoginForm extends React.Component {
                         id="email"
                         placeholder="email@email.com.br"
                         error={this.state.email.error}
+                        value={this.state.email.value}
                         onChange={element => this.setState({ email: { value: element.target.value, error: "" } })}
                     />
 
@@ -99,6 +95,7 @@ class LoginForm extends React.Component {
                         id="password"
                         placeholder="•••••••••"
                         error={this.state.password.error}
+                        value={this.state.password.value}
                         onChange={element => this.setState({ password: { value: element.target.value, error: "" } })}
                     />
 
