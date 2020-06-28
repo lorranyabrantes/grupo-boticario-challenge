@@ -1,11 +1,25 @@
 import React from 'react';
 import "./styles.css";
 
-const Input = (props) => (
-    <> 
-        {props.label ? <label className="form-label" htmlFor={props.id}>{props.label}</label> : (null)}
-        <input className="form-input" placeholder={props.placeholder} type={props.type} name={props.name} id={props.id}/>
-    </>
-)
+
+class Input extends React.Component {
+
+    render = () => {
+        const { label, id, placeholder, type, name, error, onChange } = this.props;
+        return (<>
+            {label && <label className="form-label" htmlFor={id}>{label}</label>}
+
+            <input className="form-input"
+                id={id}
+                placeholder={placeholder}
+                type={type}
+                name={name}
+                onChange={onChange}
+            />
+
+            {error && <p className="form-input__error">{error}</p>}
+        </>)
+    }
+}
 
 export default Input;
