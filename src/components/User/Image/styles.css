@@ -1,0 +1,59 @@
+.user__image {
+    width: 150px;
+    height: 150px;
+    position: relative;
+}
+
+.user__box-image {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 5px solid #fff;
+    box-shadow: 0 5px 15px -5px rgba(0, 0, 0, 0.2);
+}
+
+.user__input-file {
+    display: none;
+}
+
+.user__add-image {
+    position: absolute;
+    bottom: 0;
+    right: 15px;
+    background-color: #007E78;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    display: block;
+    color: #fff;
+    font-size: 20px;
+    border: 0;
+}
+
+.user__add-image:focus {
+    outline: none;
+    cursor: pointer;
+}
+
+@media screen and (max-width: 425px) {
+    .user__image {
+        width: 100px;
+        height: 100px;
+    }
+    
+    .user__box-image {
+        border: 2.5px solid #fff;
+    }
+
+    .user__add-image {
+        right: 1px;
+        font-size: 18px;
+        width: 30px;
+        height: 30px;
+    }
+}
+
+.user__image img {
+    width: 100%;
+}

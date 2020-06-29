@@ -98,7 +98,6 @@ class RegisterForm extends React.Component {
     }
 
     handleCloseModal = () => {
-        console.log("oi")
         this.setState({ successModal: false })
     }
 
