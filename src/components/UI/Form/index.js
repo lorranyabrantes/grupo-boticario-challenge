@@ -9,7 +9,7 @@ class Form extends React.Component {
 
         const htmlClass = className ? className : "";
 
-        return (<form className={"form" + htmlClass} onSubmit={onSubmit}>
+        return (<form className={"form " + htmlClass} onSubmit={onSubmit}>
             {children}
         </form>)
     }

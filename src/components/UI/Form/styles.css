@@ -4,3 +4,10 @@
     margin: 15px 0;
     color: #ff6347;
 }
+
+.form-success {
+    display: block;
+    font-size: 12px;
+    margin: 15px 0;
+    color: #007E78;
+}

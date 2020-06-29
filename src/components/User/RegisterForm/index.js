@@ -83,18 +83,23 @@ class RegisterForm extends React.Component {
             );
 
             if (response) {
-                this.setState({
-                    name: { value: "", error: null },
-                    cpf: { value: "", error: null },
-                    email: { value: "", error: null },
-                    password: { value: "", error: null }, successModal: true
-                });
+                this.clearInputs();
             }
         } catch (error) {
             this.setState({
                 formError: "Ops, algo deu errado no seu cadastro."
             });
         }
+    }
+
+    clearInputs = () => {
+        this.setState({
+            name: { value: "", error: null },
+            cpf: { value: "", error: null },
+            email: { value: "", error: null },
+            password: { value: "", error: null }, 
+            successModal: true
+        });
     }
 
     handleCloseModal = () => {
@@ -104,61 +109,61 @@ class RegisterForm extends React.Component {
     render() {
         return (
             <>
-            <Form className="form-register" onSubmit={this.handleRegister}>
-                <Input
-                    label={"Nome completo"}
-                    type="text"
-                    name="name"
-                    id="name"
-                    error={this.state.name.error}
-                    value={this.state.name.value}
-                    onChange={element => this.setState({ name: { value: element.target.value, error: "" } })}
-                />
+                <Form className="form-register" onSubmit={this.handleRegister}>
+                    <Input
+                        label={"Nome completo"}
+                        type="text"
+                        name="name"
+                        id="name"
+                        error={this.state.name.error}
+                        value={this.state.name.value}
+                        onChange={element => this.setState({ name: { value: element.target.value, error: "" } })}
+                    />
 
-                <Input
-                    label={"CPF"}
-                    type="text"
-                    name="cpf"
-                    id="cpf"
-                    placeholder="999.999.999-99"
-                    error={this.state.cpf.error}
-                    value={this.state.cpf.value}
-                    onChange={element => this.setState({ cpf: { value: helper.cpfMask(element.target.value), error: "" } })}
-                />
+                    <Input
+                        label={"CPF"}
+                        type="text"
+                        name="cpf"
+                        id="cpf"
+                        placeholder="999.999.999-99"
+                        error={this.state.cpf.error}
+                        value={this.state.cpf.value}
+                        onChange={element => this.setState({ cpf: { value: helper.cpfMask(element.target.value), error: "" } })}
+                    />
 
-                <Input
-                    label={"Email"}
-                    type="text"
-                    name="email"
-                    id="email"
-                    placeholder="email@email.com.br"
-                    error={this.state.email.error}
-                    value={this.state.email.value}
-                    onChange={element => this.setState({ email: { value: element.target.value, error: "" } })}
-                />
+                    <Input
+                        label={"Email"}
+                        type="text"
+                        name="email"
+                        id="email"
+                        placeholder="email@email.com.br"
+                        error={this.state.email.error}
+                        value={this.state.email.value}
+                        onChange={element => this.setState({ email: { value: element.target.value, error: "" } })}
+                    />
 
-                <Input
-                    label={"Senha"}
-                    type="password"
-                    name="password"
-                    id="password"
-                    placeholder="•••••••••"
-                    error={this.state.password.error}
-                    value={this.state.password.value}
-                    onChange={element => this.setState({ password: { value: element.target.value, error: "" } })}
-                />
+                    <Input
+                        label={"Senha"}
+                        type="password"
+                        name="password"
+                        id="password"
+                        placeholder="•••••••••"
+                        error={this.state.password.error}
+                        value={this.state.password.value}
+                        onChange={element => this.setState({ password: { value: element.target.value, error: "" } })}
+                    />
 
-                {this.state.formError && <p className="form-error">{this.state.formError}</p>}
+                    {this.state.formError && <p className="form-error">{this.state.formError}</p>}
 
-                <Button type={"submit"}>Cadastrar</Button>
-            </Form>
-            <Modal
-                title="Cadastro realizado :)"
-                isActive={this.state.successModal}
-                onClick={this.handleCloseModal}
-            >
-                <Button type={"button"} onClick={() => this.props.history.push("/")}>Fazer login</Button>
-            </Modal>
+                    <Button type={"submit"}>Cadastrar</Button>
+                </Form>
+                <Modal
+                    title="Cadastro realizado :)"
+                    isActive={this.state.successModal}
+                    onClick={this.handleCloseModal}
+                >
+                    <Button type={"button"} onClick={() => this.props.history.push("/")}>Fazer login</Button>
+                </Modal>
             </>
         )
     }

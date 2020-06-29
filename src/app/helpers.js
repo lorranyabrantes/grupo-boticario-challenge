@@ -13,6 +13,24 @@ const helper = {
             .replace(/(\d{3})(\d)/, '$1.$2')
             .replace(/(\d{3})(\d{1,2})/, '$1-$2')
             .replace(/(-\d{2})\d+?$/, '$1')
+    },
+    dateMask(value) {
+        return value
+            .replace(/\D/g, '')
+            .replace(/(\d{2})(\d)/, '$1/$2')
+            .replace(/(\d{2})(\d{1,2})/, '$1/$2')
+            .replace(/(\d{4})\d+?$/, '$1')
+    },
+    numberMask(value) {
+        return value
+            .replace(/([a-zA-Z-])/g, '')
+    },
+    orderCodeMask(value) {
+        return value
+        .replace(/\D/g, '')
+        .replace(/(\d{0})(\d)/, '#$1$2')
+        .replace(/(\d{13})(\d{1,2})/, '$1-$2')
+        .replace(/(-\d{2})\d+?$/, '$1');
     }
 }
 

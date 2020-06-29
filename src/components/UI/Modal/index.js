@@ -10,7 +10,7 @@ class Modal extends React.Component {
         const openClass = isActive ? "modal--open" : "";
 
         return (
-        <div className={"modal__box" + openClass}>
+        <div className={"modal__box " + openClass}>
             <div className={"modal " + htmlClass}>
                 <h2 className="modal__title">{title}</h2>
                 <button onClick={onClick} className="modal__close"></button>
