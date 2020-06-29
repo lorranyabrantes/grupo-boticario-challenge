@@ -166,15 +166,15 @@
 }
 
 .orders__status .icon-approved {
-    background-image: url("../../../assets/img/icon-approved.png");
+    background-image: url("../../assets/img/icon-approved.png");
 }
 
 .orders__status .icon-refused {
-    background-image: url("../../../assets/img/icon-refused.png");
+    background-image: url("../../assets/img/icon-refused.png");
 }
 
 .orders__status .icon-progress {
-    background-image: url("../../../assets/img/icon-progress.png");
+    background-image: url("../../assets/img/icon-progress.png");
 }
 
 .orders__details {

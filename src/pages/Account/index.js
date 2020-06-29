@@ -2,7 +2,7 @@ import React from 'react';
 import Header from '../../components/UI/Header';
 import Footer from '../../components/UI/Footer';
 import UserDetails from '../../components/User/Details';
-import OrdersList from '../../components/Orders/List';
+import Orders from '../../components/Orders';
 
 
 //import { Link } from 'react-router-dom';
@@ -17,7 +17,7 @@ const Account = () => (
         <main className="main">
             <div className="account container">
                 <UserDetails />
-                <OrdersList/>
+                <Orders/>
             </div>
         </main>
         <Footer />
