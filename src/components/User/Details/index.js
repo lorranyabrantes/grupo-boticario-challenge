@@ -3,9 +3,12 @@ import React from 'react';
 import Modal from "../../UI/Modal";
 import UserImage from "../Image";
 
+import helper from '../../../app/helpers';
 import api from "../../../services/api";
 
 import "./styles.css";
+
+import { connect } from 'react-redux';
 
 class UserDetails extends React.Component {
     constructor() {
@@ -39,6 +42,7 @@ class UserDetails extends React.Component {
 
     render = () => {
         const { user, errorModal, modalMessage } = this.state;
+        const { cashback } = this.props;
 
         return (
             <>
@@ -46,7 +50,9 @@ class UserDetails extends React.Component {
                     <UserImage src={user.image} />
                     <div className="user__data">
                         <p className="user__name">{user.name}</p>
-                        <p className="user__cashback">Seu valor de cashback acumulado até o momento é de: <span className="user__cashback--highlight">r$ 50,00</span></p>
+                        <p className="user__cashback">Seu valor de cashback acumulado até o momento é de: 
+                            {cashback && <span className="user__cashback--highlight">{helper.formatMoney(cashback)}</span>}
+                        </p>
                     </div>
                 </div>}
 
@@ -62,4 +68,9 @@ class UserDetails extends React.Component {
     }
 }
 
-export default UserDetails;
+
+const mapStateToProps = store => ({
+    cashback: store.cashbackState.cashback
+});
+
+export default connect(mapStateToProps)(UserDetails);

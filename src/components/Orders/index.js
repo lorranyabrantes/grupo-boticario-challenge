@@ -8,6 +8,10 @@ import RegisterForm from './Register';
 import api from "../../services/api";
 import helper from '../../app/helpers';
 
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { setCashback } from '../../app/actions';
+
 import "./styles.css";
 
 class Orders extends React.Component {
@@ -32,6 +36,7 @@ class Orders extends React.Component {
 
             const orders = response.data.orders.map(item => { return { ...item, isActive: true } });
 
+            this.props.setCashback(response.data.cashback);
             this.setState({ orders: orders });
         } catch (error) {
             this.setState({ modalMessage: error.data.message, errorModal: true })
@@ -138,4 +143,10 @@ class Orders extends React.Component {
     }
 }
 
-export default Orders;
+const mapStateToProps = store => ({
+    cashback: store.cashbackState.cashback
+});
+
+const mapDispatchToProps = dispatch => bindActionCreators({ setCashback }, dispatch);
+
+export default connect(mapStateToProps, mapDispatchToProps)(Orders);
