@@ -1,6 +1,7 @@
 import React from 'react';
 import Button from '../../UI/Button';
 import Input from '../../UI/Input';
+import Modal from '../../UI/Modal';
 import Form from '../../UI/Form';
 
 import api from "../../../services/api";
@@ -16,7 +17,8 @@ class RegisterForm extends React.Component {
             cpf: { value: "", error: null },
             email: { value: "", error: null },
             password: { value: "", error: null },
-            formError: null
+            formError: null,
+            successModal: false
         };
     }
 
@@ -80,9 +82,14 @@ class RegisterForm extends React.Component {
                 }
             );
 
-            console.log(response)
-
-            //this.props.history.push("/login");
+            if (response) {
+                this.setState({
+                    name: { value: "", error: null },
+                    cpf: { value: "", error: null },
+                    email: { value: "", error: null },
+                    password: { value: "", error: null }, successModal: true
+                });
+            }
         } catch (error) {
             this.setState({
                 formError: "Ops, algo deu errado no seu cadastro."
@@ -90,8 +97,14 @@ class RegisterForm extends React.Component {
         }
     }
 
+    handleCloseModal = () => {
+        console.log("oi")
+        this.setState({ successModal: false })
+    }
+
     render() {
         return (
+            <>
             <Form className="form-register" onSubmit={this.handleRegister}>
                 <Input
                     label={"Nome completo"}
@@ -140,6 +153,14 @@ class RegisterForm extends React.Component {
 
                 <Button type={"submit"}>Cadastrar</Button>
             </Form>
+            <Modal
+                title="Cadastro realizado :)"
+                isActive={this.state.successModal}
+                onClick={this.handleCloseModal}
+            >
+                <Button type={"button"} onClick={() => this.props.history.push("/")}>Fazer login</Button>
+            </Modal>
+            </>
         )
     }
 }
