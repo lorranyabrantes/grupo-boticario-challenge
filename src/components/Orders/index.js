@@ -5,71 +5,137 @@ import Modal from '../UI/Modal';
 
 import RegisterForm from './Register';
 
+import api from "../../services/api";
+import helper from '../../app/helpers';
+
 import "./styles.css";
 
-const Orders = () => (
-    <>
-    <div className="orders">
-        <div className="orders__header">
-            <div className="orders__intro">
-                <h3 className="orders__title">Suas compras</h3>
-                <p className="orders__description">Aqui você pode acompanhar o status dos pedidos cadastrados:</p>
-            </div>
-            <div className="orders__actions">
-                <Select className="form-select--small">
-                    <option value="default" disabled="disabled">Filtrar:</option>
-                    <option value="approved">Aprovado</option>
-                    <option value="progress">Em validação</option>
-                    <option value="refused">Reprovado</option>
-                </Select>
-                <Button className="button--small button--outline">Mudar visualização</Button>
-                <Button className="button--small button--outline">+ Nova compra</Button>
-            </div>
-        </div>
-        <ul className="orders__cards orders__cards--large">
-            <li className="orders__item">
-                <div className="orders__status orders__status--progress">
-                    <i className="icon icon-progress"></i>
-                    <h3>Em validação</h3>
+class Orders extends React.Component {
+    constructor() {
+        super();
+        this.state = {
+            orders: null,
+            modalMessage: "",
+            largeView: false,
+            ordersModal: false,
+            errorModal: false
+        };
+    }
+
+    componentDidMount() {
+        this.getOrders();
+    }
+
+    getOrders = async () => {
+        try {
+            const response = await api.get("/orders");
+
+            const orders = response.data.orders.map(item => { return { ...item, isActive: true } });
+
+            this.setState({ orders: orders });
+        } catch (error) {
+            this.setState({ modalMessage: error.data.message, errorModal: true })
+        }
+    }
+
+    handleErrorCloseModal = () => {
+        this.setState({ errorModal: false })
+    }
+
+    handleCloseOrdersModal = () => {
+        this.setState({ ordersModal: false })
+    }
+
+    handleOpenOrdersModal = () => {
+        this.setState({ ordersModal: true })
+    }
+
+    handleChangeView = () => {
+        this.setState({ largeView: !this.state.largeView })
+    }
+
+    handleFilterOrders = (element) => {
+        let orders = this.state.orders;
+
+        orders.forEach(item => {
+            const isDefault = element.target.value === "default";
+            const isCurrentFilter = item.status === element.target.value;
+
+            item.isActive = isDefault || isCurrentFilter;
+        });
+
+        this.setState({ orders: orders })
+    }
+
+    render = () => {
+        const { errorModal, modalMessage, orders, ordersModal } = this.state;
+        return (
+            <>
+                <div className="orders">
+                    <div className="orders__header">
+                        <div className="orders__intro">
+                            <h3 className="orders__title">Suas compras</h3>
+                            <p className="orders__description">Aqui você pode acompanhar o status dos pedidos cadastrados:</p>
+                        </div>
+                        <div className="orders__actions">
+                            <Select className="form-select--small" onChange={this.handleFilterOrders}>
+                                <option value="default">Filtrar:</option>
+                                <option value="approved">Aprovado</option>
+                                <option value="progress">Em validação</option>
+                                <option value="refused">Reprovado</option>
+                            </Select>
+                            <Button
+                                className="button--small button--outline"
+                                onClick={this.handleChangeView} >Mudar visualização</Button>
+                            <Button
+                                className="button--small button--outline"
+                                onClick={this.handleOpenOrdersModal} >+ Nova compra</Button>
+                        </div>
+                    </div>
+                    <ul className={`orders__cards ${this.state.largeView ? "orders__cards--large" : ""}`}>
+                        {orders && orders.length > 0 ?
+                            orders.map((order, index) => (
+                                <li className={`orders__item ${!order.isActive ? "orders__item--hidden" : ""}`} key={index}>
+                                    <div className={`orders__status orders__status--${order.status}`}>
+                                        <i className={`icon icon-${order.status}`}></i>
+                                        <h3>{order.status === "approved" ? "Aprovado" :
+                                            order.status === "refused" ? "Reprovado" :
+                                                order.status === "progress" ? "Em validação" : (null)}
+                                        </h3>
+                                    </div>
+
+                                    <div className="orders__details">
+                                        <h4 className="orders__code">{order.id}</h4>
+                                        <span className="orders__date">{order.date}</span>
+                                        <p className="orders__cashback">Você pode receber um cashback nessa compra de <b>{order.cashback_percentage}%</b> no valor de <b>{helper.formatMoney(order.cashback_value)}</b>.</p>
+                                        <h4 className="orders__price">{helper.formatMoney(order.value)}</h4>
+                                    </div>
+                                </li>
+                            ))
+                            : orders != null ?
+                                <p className="order__empty">Você ainda não tem nenhum pedido cadastrado :(</p>
+                                : (null)}
+                    </ul>
                 </div>
-                <div className="orders__details">
-                    <h4 className="orders__code">#1040730343111-01</h4>
-                    <span className="orders__date">08/04/2020</span>
-                    <p className="orders__cashback">Você pode receber um cashback nessa compra de <b>50%</b> no valor de <b>R$ 50,00</b>.</p>
-                    <h4 className="orders__price">R$ 100,00</h4>
-                </div>
-            </li>
-            <li className="orders__item">
-                <div className="orders__status orders__status--refused">
-                    <i className="icon icon-refused"></i>
-                    <h3>Reprovado</h3>
-                </div>
-                <div className="orders__details">
-                    <h4 className="orders__code">#1040730343111-01</h4>
-                    <span className="orders__date">08/04/2020</span>
-                    <p className="orders__cashback">Você pode receber um cashback nessa compra de <b>50%</b> no valor de <b>R$ 50,00</b>.</p>
-                    <h4 className="orders__price">R$ 100,00</h4>
-                </div>
-            </li>
-            <li className="orders__item">
-                <div className="orders__status orders__status--approved">
-                    <i className="icon icon-approved"></i>
-                    <h3>Aprovado</h3>
-                </div>
-                <div className="orders__details">
-                    <h4 className="orders__code">#1040730343111-01</h4>
-                    <span className="orders__date">08/04/2020</span>
-                    <p className="orders__cashback">Você pode receber um cashback nessa compra de <b>50%</b> no valor de <b>R$ 50,00</b>.</p>
-                    <h4 className="orders__price">R$ 100,00</h4>
-                </div>
-            </li>
-        </ul>
-    </div>
-    
-    <Modal title="Cadastre suas compras :)">
-        <RegisterForm />
-    </Modal>
-    </>
-)
+
+                <Modal
+                    title="Cadastre suas compras :)"
+                    isActive={ordersModal}
+                    onClick={this.handleCloseOrdersModal}
+                >
+                    <RegisterForm />
+                </Modal>
+
+                <Modal
+                    title="Oops, algo deu errado."
+                    isActive={errorModal}
+                    onClick={this.handleErrorCloseModal}
+                >
+                    <p>{modalMessage}</p>
+                </Modal>
+            </>
+        )
+    }
+}
 
 export default Orders;

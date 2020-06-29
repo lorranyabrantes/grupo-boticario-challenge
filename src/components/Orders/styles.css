@@ -80,11 +80,20 @@
     border-radius: 12px;
     box-shadow: 0 2px 15px -5px rgba(0, 0, 0, 0.2);
     overflow: hidden;
+    display: block;
+}
+
+.orders__item--hidden {
+    display: none;
 }
 
 .orders__cards--large .orders__item {
     width: calc(50% - 20px);
     display: flex;
+}
+
+.orders__cards--large .orders__item.orders__item--hidden {
+    display: none;
 }
 
 @media screen and (max-width: 768px) {

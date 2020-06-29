@@ -2,9 +2,6 @@ import React from 'react';
 import Button from '../../UI/Button';
 import Input from '../../UI/Input';
 
-
-//import "./styles.css";
-
 class RegisterForm extends React.Component {
     constructor() {
         super();
