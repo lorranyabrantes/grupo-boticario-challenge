@@ -1,4 +1,6 @@
 import React from 'react';
+
+import Loading from '../UI/Loading';
 import Button from '../UI/Button';
 import Select from '../UI/Select';
 import Modal from '../UI/Modal';
@@ -22,7 +24,8 @@ class Orders extends React.Component {
             modalMessage: "",
             largeView: false,
             ordersModal: false,
-            errorMessage: false
+            errorMessage: false,
+            showLoading: false
         };
     }
 
@@ -31,15 +34,18 @@ class Orders extends React.Component {
     }
 
     getOrders = async () => {
+        this.setState({ showLoading: true });
+        
         try {
             const response = await api.get("/orders");
 
             const orders = response.data.orders.map(item => { return { ...item, isActive: true } });
 
             this.props.setCashback(response.data.cashback);
-            this.setState({ orders: orders });
+
+            this.setState({ orders: orders, showLoading: false});
         } catch (error) {
-            this.setState({ errorMessage: true });
+            this.setState({ errorMessage: true, showLoading: false  });
 
             console.log(error)
         }
@@ -117,6 +123,8 @@ class Orders extends React.Component {
                     onClick={this.handleCloseOrdersModal} >
                     <RegisterForm />
                 </Modal>}
+
+                <Loading isActive={this.state.showLoading} />
             </>
         )
     }

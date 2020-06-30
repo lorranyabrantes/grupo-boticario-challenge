@@ -1,4 +1,5 @@
 import React from 'react';
+import Loading from '../../UI/Loading';
 import Button from '../../UI/Button';
 import Input from '../../UI/Input';
 import Modal from '../../UI/Modal';
@@ -18,7 +19,8 @@ class RegisterForm extends React.Component {
             email: { value: "", error: null },
             password: { value: "", error: null },
             formError: null,
-            successModal: false
+            successModal: false,
+            showLoading: false 
         };
     }
 
@@ -71,6 +73,7 @@ class RegisterForm extends React.Component {
 
     requestRegister = async () => {
         const { name, cpf, email, password } = this.state;
+        this.setState({ showLoading: true });
 
         try {
             const response = await api.post("/user",
@@ -87,7 +90,8 @@ class RegisterForm extends React.Component {
             }
         } catch (error) {
             this.setState({
-                formError: "Ops, algo deu errado no seu cadastro."
+                formError: "Ops, algo deu errado no seu cadastro.",
+                showLoading: false
             });
         }
     }
@@ -98,7 +102,8 @@ class RegisterForm extends React.Component {
             cpf: { value: "", error: null },
             email: { value: "", error: null },
             password: { value: "", error: null }, 
-            successModal: true
+            successModal: true,
+            showLoading: false
         });
     }
 
@@ -157,6 +162,9 @@ class RegisterForm extends React.Component {
 
                     <Button type={"submit"}>Cadastrar</Button>
                 </Form>
+
+                <Loading isActive={this.state.showLoading} />
+
                 <Modal
                     title="Cadastro realizado :)"
                     isActive={this.state.successModal}

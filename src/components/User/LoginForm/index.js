@@ -1,4 +1,6 @@
 import React from 'react';
+
+import Loading from '../../UI/Loading';
 import Button from '../../UI/Button';
 import Input from '../../UI/Input';
 import Form from '../../UI/Form';
@@ -21,7 +23,8 @@ class LoginForm extends React.Component {
                 value: "",
                 error: null
             },
-            formError: null
+            formError: null,
+            showLoading: false
         };
     }
 
@@ -55,6 +58,8 @@ class LoginForm extends React.Component {
     };
 
     requestLogin = async () => {
+        this.setState({ showLoading: true });
+
         const { email, password } = this.state;
         try {
             const response = await api.post("/login",
@@ -65,11 +70,13 @@ class LoginForm extends React.Component {
             );
 
             login(response.data.token);
+            this.setState({ showLoading: false });
+
             this.props.history.push("/account");
-            
         } catch (error) {
             this.setState({
-                formError: "Email ou senha incorretos :("
+                formError: "Email ou senha incorretos :(",
+                showLoading: false
             });
         }
     }
@@ -104,6 +111,8 @@ class LoginForm extends React.Component {
 
                     <Button type={"submit"}>Entrar</Button>
                 </Form>
+
+                <Loading isActive={this.state.showLoading} />
             </>
         )
     }
