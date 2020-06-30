@@ -1,4 +1,51 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app), using the [Redux](https://redux.js.org/) and [Redux Toolkit](https://redux-toolkit.js.org/) template.
+# Grupo Boticário Challenge
+
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app), using the [Redux](https://redux.js.org/) and [Redux Toolkit](https://redux-toolkit.js.org/) template. It's a challenge proposed by the company Grupo Boticário.
+
+## Simple demo
+
+### Signing in and changing the display of cards:
+![Login and change view](demo/login-view.gif)
+
+### Adding the image and showing the filters:
+![Add image and change filter](demo/image-filter.gif)
+
+## About back-end
+The backend was developed using [Node.js](https://nodejs.org/en/docs/) and [JWT](https://jwt.io/introduction/) for authentication. User and order data are mocked on the server.
+
+To do the login test we have three users available:
+
+| Email  |  Senha  |
+| ------------------- | ------------------- |
+|  teste@teste.com |  teste |
+|  email@email.com |  email |
+|  lorrany@lorrany.com |  lorrany |
+
+## Project Structure
+
+Within the download you'll find the following directories:
+
+```
+|-- grupo-boticario-challenge
+    |-- .postman
+    |-- public
+    |-- src
+        |-- app
+        |-- assets
+            |-- fonts
+            |-- imgs
+        |-- components
+        |-- pages
+        |-- services
+        |-- test
+```
+
+# Getting Started
+
+## Prerequisites
+
+To run this project you need to install [node](https://nodejs.org/en/) and [npm](https://www.npmjs.com/).
+
 
 ## Available Scripts
 
@@ -53,7 +100,8 @@ This section has moved here: https://facebook.github.io/create-react-app/docs/an
 
 ### Making a Progressive Web App
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
+This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-
+progressive-web-app
 
 ### Advanced Configuration
 
@@ -66,3 +114,8 @@ This section has moved here: https://facebook.github.io/create-react-app/docs/de
 ### `yarn build` fails to minify
 
 This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+
+
+## Authors
+
+* **Lorrany Abrantes**
