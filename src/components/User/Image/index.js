@@ -61,7 +61,7 @@ class UserImage extends React.Component {
         return (
             <div className="user__image">
                 <div className="user__box-image">
-                    {image && <img src={image} alt="" />}
+                    {image && <img id="profile-image" src={image} alt="" />}
                 </div>
 
                 <input

@@ -89,9 +89,11 @@ class Orders extends React.Component {
                             </Select>
                             <Button
                                 className="button--small button--outline"
+                                id={"change-view"}
                                 onClick={this.handleChangeView} >Mudar visualização</Button>
                             <Button
                                 className="button--small button--outline"
+                                id={"new-order"}
                                 onClick={this.handleOpenOrdersModal} >+ Nova compra</Button>
                         </div>
                     </div>
@@ -102,18 +104,19 @@ class Orders extends React.Component {
                             ))
                             : orders != null ?
                                 <p className="orders__empty">Você ainda não tem nenhum pedido cadastrado :(</p>
-                                : (null)
+                            : (null)
                         }
 
                         {errorMessage && <p className="orders__error">Houve um problema o carregar suas compras</p>}
                     </ul>
                 </div>
 
-                <Modal title="Cadastre suas compras :)"
+                {ordersModal && <Modal title="Cadastre suas compras :)"
+                    className={"modal-orders"}
                     isActive={ordersModal}
                     onClick={this.handleCloseOrdersModal} >
                     <RegisterForm />
-                </Modal>
+                </Modal>}
             </>
         )
     }
