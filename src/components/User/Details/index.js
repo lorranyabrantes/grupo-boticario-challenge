@@ -30,7 +30,7 @@ class UserDetails extends React.Component {
             this.setState({ user: response.data })
         } catch (error) {
             this.setState({
-                modalMessage: error.data.message,
+                modalMessage: "Houve um erro ao buscar seus dados",
                 errorModal: true
             })
         }
@@ -56,11 +56,9 @@ class UserDetails extends React.Component {
                     </div>
                 </div>}
 
-                <Modal
-                    title="Oops, algo deu errado."
+                <Modal title="Oops, algo deu errado."
                     isActive={errorModal}
-                    onClick={this.handleCloseModal}
-                >
+                    onClick={this.handleCloseModal} >
                     <p>{modalMessage}</p>
                 </Modal>
             </>

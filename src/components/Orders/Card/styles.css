@@ -1,0 +1,156 @@
+
+.orders__item {
+    margin: 0 10px 20px;
+    width: calc(20% - 20px);
+    list-style: none;
+    border-radius: 12px;
+    box-shadow: 0 2px 15px -5px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+    display: block;
+}
+
+.orders__item--hidden {
+    display: none;
+}
+
+.orders__cards--large .orders__item {
+    width: calc(50% - 20px);
+    display: flex;
+}
+
+.orders__cards--large .orders__item.orders__item--hidden {
+    display: none;
+}
+
+@media screen and (max-width: 768px) {
+    .orders__cards--large .orders__item {
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .orders__item {
+        width: calc(33.33% - 20px);
+    }
+}
+
+@media screen and (max-width: 425px) {
+    .orders__item {
+        width: 100%;
+        margin: 0 0 20px;
+    }
+}
+
+.orders__status {
+    padding: 15px 0;
+}
+
+.orders__cards--large .orders__status {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 200px;
+}
+
+@media screen and (max-width: 425px) {
+    .orders__cards--large .orders__status {
+        width: 100px;
+        padding: 0 5px;
+    }
+}
+
+.orders__status h3 {
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    text-align: center;
+    margin-top: 7px;
+}
+
+.orders__status--approved {
+    background-color: #eefaeb
+}
+
+.orders__status--approved h3 {
+    color: #00c300;
+}
+
+.orders__status--refused {
+    background-color: #fdebe7;
+}
+
+.orders__status--refused h3 {
+    color: #e84b2f;
+}
+
+.orders__status--progress {
+    background-color: #fffae0;
+}
+
+.orders__status--progress h3 {
+    color: #f1cb00;
+}
+
+.orders__status .icon {
+    display: block;
+    margin: 0 auto;
+    height: 25px;
+    width: 25px;
+    background-position: center;
+    background-size: contain;
+}
+
+.orders__status .icon-approved {
+    background-image: url("../../../assets/img/icon-approved.png");
+}
+
+.orders__status .icon-refused {
+    background-image: url("../../../assets/img/icon-refused.png");
+}
+
+.orders__status .icon-progress {
+    background-image: url("../../../assets/img/icon-progress.png");
+}
+
+.orders__details {
+    padding: 0 18px 18px;
+}
+
+.orders__cards--large .orders__details {
+    width: calc(100% - 200px);
+}
+
+@media screen and (max-width: 425px) {
+    .orders__cards--large .orders__details {
+        width: calc(100% - 100px);
+    }
+}
+
+.orders__code {
+    margin-top: 20px;
+    font-size: 20px;
+    font-family: 'OBoticario';
+}
+
+.orders__date {
+    margin-top: 5px;
+    font-size: 14px;
+    color: #a7a7a7;
+}
+
+.orders__cashback {
+    margin-top: 15px;
+}
+
+.orders__price {
+    margin-top: 15px;
+    color: #007E78;
+    font-size: 18px;
+    font-weight: 700;
+    display: block;
+    text-align: right;
+}
+
+.orders__cards--large .orders__price {
+    text-align: left;
+}

@@ -66,6 +66,7 @@ class LoginForm extends React.Component {
 
             login(response.data.token);
             this.props.history.push("/account");
+            
         } catch (error) {
             this.setState({
                 formError: "Email ou senha incorretos :("

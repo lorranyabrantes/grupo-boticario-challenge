@@ -35,8 +35,7 @@ class RegisterForm extends React.Component {
             this.setState({ code: code });
             error = true;
         }
-
-        console.log(price.value, isNaN(price.value))
+        
         if (price.value === "") {
             price.error = "Preencha o valor"
             this.setState({ price: price });

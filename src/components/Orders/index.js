@@ -4,9 +4,9 @@ import Select from '../UI/Select';
 import Modal from '../UI/Modal';
 
 import RegisterForm from './Register';
+import Card from './Card';
 
 import api from "../../services/api";
-import helper from '../../app/helpers';
 
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
@@ -22,7 +22,7 @@ class Orders extends React.Component {
             modalMessage: "",
             largeView: false,
             ordersModal: false,
-            errorModal: false
+            errorMessage: false
         };
     }
 
@@ -39,12 +39,10 @@ class Orders extends React.Component {
             this.props.setCashback(response.data.cashback);
             this.setState({ orders: orders });
         } catch (error) {
-            this.setState({ modalMessage: error.data.message, errorModal: true })
-        }
-    }
+            this.setState({ errorMessage: true });
 
-    handleErrorCloseModal = () => {
-        this.setState({ errorModal: false })
+            console.log(error)
+        }
     }
 
     handleCloseOrdersModal = () => {
@@ -73,7 +71,7 @@ class Orders extends React.Component {
     }
 
     render = () => {
-        const { errorModal, modalMessage, orders, ordersModal } = this.state;
+        const { orders, ordersModal, errorMessage } = this.state;
         return (
             <>
                 <div className="orders">
@@ -100,43 +98,21 @@ class Orders extends React.Component {
                     <ul className={`orders__cards ${this.state.largeView ? "orders__cards--large" : ""}`}>
                         {orders && orders.length > 0 ?
                             orders.map((order, index) => (
-                                <li className={`orders__item ${!order.isActive ? "orders__item--hidden" : ""}`} key={index}>
-                                    <div className={`orders__status orders__status--${order.status}`}>
-                                        <i className={`icon icon-${order.status}`}></i>
-                                        <h3>{order.status === "approved" ? "Aprovado" :
-                                            order.status === "refused" ? "Reprovado" :
-                                                order.status === "progress" ? "Em validação" : (null)}
-                                        </h3>
-                                    </div>
-
-                                    <div className="orders__details">
-                                        <h4 className="orders__code">{order.id}</h4>
-                                        <span className="orders__date">{order.date}</span>
-                                        <p className="orders__cashback">Você pode receber um cashback nessa compra de <b>{order.cashback_percentage}%</b> no valor de <b>{helper.formatMoney(order.cashback_value)}</b>.</p>
-                                        <h4 className="orders__price">{helper.formatMoney(order.value)}</h4>
-                                    </div>
-                                </li>
+                                <Card order={order} key={index} />
                             ))
                             : orders != null ?
-                                <p className="order__empty">Você ainda não tem nenhum pedido cadastrado :(</p>
-                                : (null)}
+                                <p className="orders__empty">Você ainda não tem nenhum pedido cadastrado :(</p>
+                                : (null)
+                        }
+
+                        {errorMessage && <p className="orders__error">Houve um problema o carregar suas compras</p>}
                     </ul>
                 </div>
 
-                <Modal
-                    title="Cadastre suas compras :)"
+                <Modal title="Cadastre suas compras :)"
                     isActive={ordersModal}
-                    onClick={this.handleCloseOrdersModal}
-                >
+                    onClick={this.handleCloseOrdersModal} >
                     <RegisterForm />
-                </Modal>
-
-                <Modal
-                    title="Oops, algo deu errado."
-                    isActive={errorModal}
-                    onClick={this.handleErrorCloseModal}
-                >
-                    <p>{modalMessage}</p>
                 </Modal>
             </>
         )
